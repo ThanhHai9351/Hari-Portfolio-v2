@@ -1,12 +1,15 @@
-import InfiniteMenu from './InfiniteMenu/InfiniteMenu';
-import Lanyard from './Lanyard/Lanyard';
-import PixelTransition from './PixelTransition/PixelTransition';
-import SplashCursor from './SplashCursor/SplashCursor';
+import { useState } from 'react';
+import BlurText from './components/BlurText/BlurText';
+import InfiniteMenu from './components/InfiniteMenu/InfiniteMenu';
+import Lanyard from './components/Lanyard/Lanyard';
+import SplashCursor from './components/SplashCursor/SplashCursor';
+import FadeContent from './components/FadeContent/FadeContent';
+import Profile from './pages/Profile';
 
 const items = [
   {
     image: 'https://avatars.githubusercontent.com/u/104017247?v=4',
-    link: 'https://github.com/ThanhHai9351',
+    link: '#',
     title: 'Giới thiệu',
     description: 'Tìm hiểu về Hari và sứ mệnh của chúng tôi'
   },
@@ -17,7 +20,7 @@ const items = [
     description: 'Các giải pháp và dịch vụ Hari cung cấp'
   },
   {
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToxcZsYxikhDdq4KaJv7PHqgdvUDqHaYLstA&s',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdviC9BZ9Cq5mlKXke6gQSNIjBv5UjiL8T9w&s',
     link: 'https://github.com/ThanhHai9351',
     title: 'Dự án',
     description: 'Những dự án tiêu biểu Hari đã thực hiện'
@@ -29,149 +32,38 @@ const items = [
     description: 'Kết nối với đội ngũ Hari ngay hôm nay'
   }
 ];
+
 function App() {
+  const [isStartAnimation, setIsStartAnimation] = useState(false)
+
+  if (!isStartAnimation) {
+    return (
+      <div className="flex justify-center items-center h-screen w-full bg-black">
+        <BlurText
+          text="Xin chào các bạn!Mình là Thanh Hải (Hari)"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={() => setIsStartAnimation(true)}
+          className="text-4xl font-bold text-white text-center whitespace-pre-line"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <div className='absolute z-10 top-0 left-10 h-36 w-36'>
-        <Lanyard position={[0, 0, 30]} gravity={[0, -40, 0]} />
-      </div>
-      <div style={{ height: '800px', position: 'relative' }}>
-        <InfiniteMenu items={items} />
-      </div>
-      <div className='flex'>
-        <PixelTransition
-          firstContent={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-              alt="default pixel transition content, a cat!"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          }
-          secondContent={
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "grid",
-                placeItems: "center",
-                backgroundColor: "#111"
-              }}
-            >
-              <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>Meow!</p>
-            </div>
-          }
-          gridSize={12}
-          pixelColor='#ffffff'
-          animationStepDuration={0.4}
-          className="custom-pixel-card"
-        />
-        <PixelTransition
-          firstContent={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-              alt="default pixel transition content, a cat!"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          }
-          secondContent={
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "grid",
-                placeItems: "center",
-                backgroundColor: "#111"
-              }}
-            >
-              <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>Meow!</p>
-            </div>
-          }
-          gridSize={12}
-          pixelColor='#ffffff'
-          animationStepDuration={0.4}
-          className="custom-pixel-card"
-        />
-        <PixelTransition
-          firstContent={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-              alt="default pixel transition content, a cat!"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          }
-          secondContent={
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "grid",
-                placeItems: "center",
-                backgroundColor: "#111"
-              }}
-            >
-              <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>Meow!</p>
-            </div>
-          }
-          gridSize={12}
-          pixelColor='#ffffff'
-          animationStepDuration={0.4}
-          className="custom-pixel-card"
-        />
-        <PixelTransition
-          firstContent={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-              alt="default pixel transition content, a cat!"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          }
-          secondContent={
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "grid",
-                placeItems: "center",
-                backgroundColor: "#111"
-              }}
-            >
-              <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>Meow!</p>
-            </div>
-          }
-          gridSize={12}
-          pixelColor='#ffffff'
-          animationStepDuration={0.4}
-          className="custom-pixel-card"
-        />
-        <PixelTransition
-          firstContent={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-              alt="default pixel transition content, a cat!"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          }
-          secondContent={
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "grid",
-                placeItems: "center",
-                backgroundColor: "#111"
-              }}
-            >
-              <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>Meow!</p>
-            </div>
-          }
-          gridSize={12}
-          pixelColor='#ffffff'
-          animationStepDuration={0.4}
-          className="custom-pixel-card"
-        />
-      </div>
+    <>
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+        <div className='absolute z-10 top-0 right-0 h-96 w-96'>
+          <Lanyard position={[0, 0, 30]} gravity={[0, -40, 0]} />
+        </div>
+        <div style={{ height: '800px', position: 'relative' }}>
+          <InfiniteMenu items={items} />
+        </div>
+        <Profile />
+      </FadeContent>
       <SplashCursor />
-    </div>
+    </>
   )
 }
 

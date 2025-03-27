@@ -1,6 +1,5 @@
 import { FC, useRef, useState, useEffect, MutableRefObject } from "react";
 import { mat4, quat, vec2, vec3 } from "gl-matrix";
-
 const discVertShaderSource = `#version 300 es
 
 uniform mat4 uWorldMatrix;
@@ -1326,7 +1325,6 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
       console.log("Internal route:", activeItem.link);
     }
   };
-
   return (
     <div className="relative w-full h-full">
       <canvas
